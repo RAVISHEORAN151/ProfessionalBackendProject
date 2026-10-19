@@ -1,0 +1,17 @@
+{
+  "name": "professional-backend-project",
+  "version": "1.0.0",
+  "description": "a Backend Project",
+  "keywords": [
+    "javascript",
+    "backend",
+    "chai"
+  ],
+  "license": "ISC",
+  "author": "Ravi Sheoran",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
