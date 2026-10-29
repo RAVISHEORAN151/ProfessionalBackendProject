@@ -36,7 +36,7 @@ const registerUser = asyncHandler( async(req, res) => {
  // return res 
 
  const {fullName, email, username, password}= req.body
-//  
+  //  
   if(
     [fullName,email,username,password].some((field) => 
         field?.trim() === "")
@@ -109,11 +109,11 @@ const loginUser = asyncHandler( async(req, res) => {
     $or: [{ username }, { email }]
   }).select("+password");
 
-if (!user) {
+  if (!user) {
     throw new ApiError(404, "user does not exist");
-}
+  }
 
-const isPasswordValid = await user.isPasswordCorrect(password);
+  const isPasswordValid = await user.isPasswordCorrect(password);
 
 
   if(!isPasswordValid){
@@ -217,7 +217,7 @@ const refreshAccessToken = asyncHandler( async(req,res) => {
     return res
      .status(200)
      .Cookie("accessToken", accessToken, options)
-     .Cookie("refreshToken", refreshToken, options)
+     .Cookie("refreshToken", newrefreshToken, options)
      .json(
       new ApiResponse(
         200,
