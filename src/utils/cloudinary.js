@@ -16,7 +16,6 @@ const uploadOnCloudinary = async (localFilePath) => {
             resource_type: "auto"
         })
         
-        // file has been uploaded successfull
        
          fs.unlinkSync(localFilePath) // remove the locally saved temporary file as the upload operation got failded
         return response; 
@@ -28,4 +27,29 @@ const uploadOnCloudinary = async (localFilePath) => {
     }
 }
 
-export {uploadOnCloudinary}
+const getPublicIdFromUrl = (url) => {
+    const afterUpload = url.split("/upload/")[1];
+    if(!afterUpload) return null
+
+    return afterUpload
+    .replace(/^v\d+\//, "")
+    .replace(/\.[^/.]+$/, "")
+}
+
+const deleteFromCloudinary = async(url) => {
+    try {
+        if(!url) return null;
+
+        const publicId = getPublicIdFromUrl(url);
+        if (!publicId) return null;
+
+        const response = await cloudinary.uploader.destroy(publicId);
+        return response
+        
+    } catch (error) {
+        return null
+        
+    }
+}
+
+export {uploadOnCloudinary, deleteFromCloudinary}

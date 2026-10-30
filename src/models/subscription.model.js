@@ -1,3 +1,11 @@
+// why we need this model
+// how it help take example
+// user -> a,b,c,d,e
+// channel -> cac, hcc, fcc
+// count subscriber of channel cac , counting of document in which channel is cac 
+// count channels subscribe by c , counting of document in which subscriber  is c
+
+
 import mongoose, { Schema } from "mongoose";
 
 const subscriptionSchema = new  Schema(
@@ -18,4 +26,4 @@ const subscriptionSchema = new  Schema(
     }
 )
 
-export const subscription = mongoose.model("subscription", subscriptionSchema)
+export const subscription = mongoose.model("Subscription", subscriptionSchema)
